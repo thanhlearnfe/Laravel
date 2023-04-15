@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\PostController;
-use App\http\Controllers\CategoryController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -16,20 +13,11 @@ use App\http\Controllers\CategoryController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::resource('posts', PostController::class);
-Route::get('/create',[PostController::class,'create']);
-Route::get('/index',[PostController::class,'index']);
-Route::get('/show/{id}',[PostController::class,'show']);
-
-Route::resource('categories', CategoryController::class);
-Route::get('/createCt',[CategoryController::class,'create']);
-Route::get('/indexCt',[CategoryController::class,'index']);
-
-
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
